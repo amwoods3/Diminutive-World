@@ -8,4 +8,5 @@
 
 import Foundation
 
-var fp = welcome()
+var player = welcome()
+run(with: player)
