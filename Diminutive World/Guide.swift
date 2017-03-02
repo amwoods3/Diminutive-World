@@ -8,6 +8,30 @@
 
 import Foundation
 
+func start_menu() -> Bool {
+    /*
+     Determines if the user wants to start a game or quit
+     returns true if the player wants to start a game
+     */
+    print("***********************************")
+    print("*** Diminutive World Start Menu ***")
+    print("***********************************")
+    print("1. Start Game")
+    print("2. Quit")
+    let option = Int(readLine()!)
+    if option != nil {
+        switch option! {
+        case 1:
+            return true
+        case 2:
+            return false
+        default:
+            return false
+        }
+    }
+    return false
+}
+
 func welcome() -> Player {
     print("Welcome to my Diminutive World, what is your name?")
     let name = readLine()!

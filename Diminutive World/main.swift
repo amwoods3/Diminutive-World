@@ -8,5 +8,12 @@
 
 import Foundation
 
-var player = welcome()
-run(with: player)
+while true {
+    if (start_menu()) {
+        var player = welcome()
+        run(with: player)
+    }
+    else {
+        break
+    }
+}
