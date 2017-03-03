@@ -11,7 +11,7 @@ import Foundation
 // The MapPath is computer specific, and won't work on any other computer
 // Should be changed to fit the computer it is on
 // Wonder how this could be done
-let MapPath = "/Users/Andrew/Documents/CS_WORK/Game/Diminutive World/assets/"
+let MapPath = "/Users/Andrew/Documents/CS_WORK/Game/Diminutive World/assets"
 
 func split(line str: String, by splitter: String) -> Array<String> {
     /*
