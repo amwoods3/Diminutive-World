@@ -11,7 +11,7 @@ import Foundation
 // The MapPath is computer specific, and won't work on any other computer
 // Should be changed to fit the computer it is on
 // Wonder how this could be done
-let MapPath = "/Users/Andrew/Documents/CS_WORK/Game/Diminutive World/assets/"
+let MapPath = "assets/"
 
 
 func split(line str: String, by splitter: String) -> Array<String> {
@@ -31,7 +31,7 @@ func loadRoom(called map: String) -> Room {
      If the file does not exist a default room is returned
      TODO: Add throwing error if file does not exist
      */
-    let map_name = MapPath + map
+    let map_name = GameDirectory + MapPath + map
     do {
         // Read the file into memory; interpret its contents
         let mapInfo = try String(contentsOfFile: map_name)
@@ -63,11 +63,11 @@ func loadRoom(called map: String) -> Room {
         }
         
         // build room and return it
-        return Room(height: height, width: width, layout: layout, transfers: transfers)
+        return Room(name: map, height: height, width: width, layout: layout, transfers: transfers)
     } catch {
         // TODO: Find Different names for each error
         print("Error: \(error)")
         
     }
-    return Room(height: 4, width: 5, layout: "_____\n#   #\n#   #\n-----\n$$$$")
+    return Room(name: "default", height: 4, width: 5, layout: "_____\n#   #\n#   #\n-----\n$$$$")
 }

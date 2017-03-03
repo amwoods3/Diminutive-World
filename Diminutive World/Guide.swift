@@ -35,8 +35,7 @@ func start_menu() -> Bool {
 func welcome() -> Player {
     print("Welcome to my Diminutive World, what is your name?")
     let name = readLine()!
-    print("Well, \(name), I hope you enjoy this world.")
-    return Player(called: name)
+    return load(name)
 }
 
 func interpret(_ action: String, done_by p: Player) {
@@ -56,6 +55,8 @@ func interpret(_ action: String, done_by p: Player) {
         print(p.locationInfo())
     case "interact":
         p.interact()
+    case "save":
+        save(p)
     case "help":
         print("Some actions have multiple input that behave in the same way")
         print("  For example \"where am i\" and \"whereami\" both have the same result")

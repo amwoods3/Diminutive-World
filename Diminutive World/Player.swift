@@ -8,8 +8,6 @@
 
 import Foundation
 
-let playerSymbol = Character("@")
-
 enum Direction {
     case north
     case south
@@ -52,6 +50,7 @@ struct Position: Hashable {
     }
 }
 
+let playerSymbol = Character("@")
 let startingRoom = "starterRoom"
 let startingPosition = Position(x: 5, y: 5)
 

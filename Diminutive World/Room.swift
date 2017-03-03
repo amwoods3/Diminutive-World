@@ -23,13 +23,15 @@ class Room {
      Room gives a player the ability to walk around and go to other rooms.
      */
     let transfers: Dictionary<Position, (String, Position)>
+    let name: String
     var blocks: Array2D<Interactable>
-    init(height: Int, width: Int, layout: String,
+    init(name: String, height: Int, width: Int, layout: String,
          transfers: Dictionary<Position, (String, Position)>) {
         /*
          Initializing a room with layout, builds room in height-by-width pattern,
          ignores newlines and everything after the last block in the room has been filled
          */
+        self.name = name
         self.blocks = Array2D<Interactable>(rows: height, columns: width)
         self.transfers = transfers
         var i: Int = 0
@@ -51,8 +53,8 @@ class Room {
         }
     }
     
-    convenience init(height: Int, width: Int, layout: String) {
-        self.init(height: height, width: width, layout: layout,
+    convenience init(name: String, height: Int, width: Int, layout: String) {
+        self.init(name: name, height: height, width: width, layout: layout,
                   transfers: Dictionary<Position, (String, Position)>())
     }
     
