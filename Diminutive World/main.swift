@@ -8,9 +8,6 @@
 
 import Foundation
 
-let starterRoom = loadRoom(called: "startersRoom")
-starterRoom.display_self()
-
 while true {
     if (start_menu()) {
         var player = welcome()

@@ -47,9 +47,20 @@ class Room {
     }
     
     func display_self() {
-        for row in self.blocks {
-            for block in row {
-                print(block, terminator: "")
+        
+    }
+    
+    func draw_room(with player: Character, at pos: Position?=nil) {
+        
+        for (i, row) in self.blocks.enumerated() {
+            for (j, block) in row.enumerated() {
+                if pos == nil {
+                    print(block, terminator: "")
+                } else if i == pos!.y && j == pos!.x {
+                    print(player, terminator: "")
+                } else {
+                    print(block, terminator: "")
+                }
             }
             print()
         }

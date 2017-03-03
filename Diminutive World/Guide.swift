@@ -44,13 +44,13 @@ func interpret(_ action: String, done_by p: Player) {
      Takes a string and performs the appropriate action for the player according to the string
      */
     switch action {
-    case "go north", "north":
+    case "go north", "north", "w":
         p.go(inDirection: Direction.north)
-    case "go south", "south":
+    case "go south", "south", "s":
         p.go(inDirection: Direction.south)
-    case "go east", "east":
+    case "go east", "east", "d":
         p.go(inDirection: Direction.east)
-    case "go west", "west":
+    case "go west", "west", "a":
         p.go(inDirection: Direction.west)
     case "where am i", "whereami":
         print(p.locationInfo())
@@ -77,6 +77,7 @@ func run(with player: Player) {
      run the game with the player passed in
      */
     while true {
+        player.draw_character()
         print(">>> ", terminator: "")
         let action = readLine()
         if action! == "quit" {

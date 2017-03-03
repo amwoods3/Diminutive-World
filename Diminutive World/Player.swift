@@ -8,6 +8,8 @@
 
 import Foundation
 
+let playerSymbol = Character("@")
+
 enum Direction {
     case north
     case south
@@ -26,9 +28,9 @@ struct Position: Hashable {
          */
         switch d {
         case Direction.north:
-            self.y += 1
-        case Direction.south:
             self.y -= 1
+        case Direction.south:
+            self.y += 1
         case Direction.west:
             self.x -= 1
         case Direction.east:
@@ -45,17 +47,21 @@ struct Position: Hashable {
     }
 }
 
+let startingRoom = "starterRoom"
+let startingPosition = Position(x: 5, y: 5)
+
 class Player {
     let name: String
     var pos: Position
-    
-    init(called name: String, at pos: Position) {
+    var room: Room
+    init(called name: String, at pos: Position, in room: String) {
         self.name = name
         self.pos = pos
+        self.room = loadRoom(called: room)
     }
     
     convenience init(called name: String) {
-        self.init(called: name, at: Position())
+        self.init(called: name, at: startingPosition, in: startingRoom)
     }
     
     func go(inDirection d: Direction) {
@@ -71,5 +77,9 @@ class Player {
         default:
             return "<\(pos.x), \(pos.y)>"
         }
+    }
+    
+    func draw_character() {
+        self.room.draw_room(with: playerSymbol, at: self.pos)
     }
 }
