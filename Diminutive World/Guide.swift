@@ -79,13 +79,14 @@ func run(with player: Player) {
     /*
      run the game with the player passed in
      */
+    player.draw_character()
     while true {
-        player.draw_character()
         print(">>> ", terminator: "")
         let action = readLine()
         if action! == "quit" {
             return
         }
+        player.draw_character()
         interpret(action!, done_by: player)
     }
 }
