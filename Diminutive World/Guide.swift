@@ -87,7 +87,7 @@ func run(with player: Player) {
         if action! == "quit" {
             return
         }
-        player.draw_character()
         interpret(action!, done_by: player)
+        player.draw_character()
     }
 }
