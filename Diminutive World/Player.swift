@@ -15,7 +15,7 @@ enum Direction {
     case west
 }
 
-struct Position {
+struct Position: Hashable {
     /*
      Position is represents a position on a 2D plane.
      */
@@ -34,6 +34,14 @@ struct Position {
         case Direction.east:
             self.x += 1
         }
+    }
+    
+    var hashValue: Int {
+        return (self.x.hashValue ^ self.y.hashValue)
+    }
+    
+    static func ==(p1: Position, p2: Position) -> Bool {
+        return (p1.x == p2.x) && (p1.y == p2.y)
     }
 }
 
