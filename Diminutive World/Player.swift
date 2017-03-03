@@ -73,7 +73,9 @@ class Player {
     
     func go(inDirection d: Direction) {
         if check(inDirection: d) {
+            // move player if spot can be stood in
             pos.move(inDirection: d);
+            self.facing = d
         } else {
             print("can't go there!")
         }
@@ -81,6 +83,10 @@ class Player {
     
     func check(inDirection d: Direction) -> Bool {
         return self.room[self.pos.get_pos(inDirection: d)].can_go_through
+    }
+    
+    func interact() {
+        self.room[self.pos.get_pos(inDirection: self.facing)].interact(with: self)
     }
     
     func locationInfo(in language: String="English") -> String {

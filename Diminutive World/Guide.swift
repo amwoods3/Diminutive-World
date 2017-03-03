@@ -54,6 +54,8 @@ func interpret(_ action: String, done_by p: Player) {
         p.go(inDirection: Direction.west)
     case "where am i", "whereami":
         print(p.locationInfo())
+    case "interact":
+        p.interact()
     case "help":
         print("Some actions have multiple input that behave in the same way")
         print("  For example \"where am i\" and \"whereami\" both have the same result")
@@ -66,6 +68,7 @@ func interpret(_ action: String, done_by p: Player) {
         print("  2. go south")
         print("  3. go west")
         print("  4. go east")
+        print("  5. interact")
         print("  5. where am i")
         print("  6. quit")
         print("  7. help")
