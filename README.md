@@ -33,7 +33,8 @@ _____
 #   #
 -----
 ```
-** Currently, No characters have any special meaning **
+
+**Character meaning are listed below**
 
 The last lines of the map represent the transfer points Each line should have
 the following format
@@ -72,5 +73,28 @@ ________ ______
 
 Builds a room that is 15x15 has one door. The door is at (0, 7) and it leads
 to (14, 7) in the other room.
+
+
+# Playing the game
+
+In the game, the character reacts every time you hit enter. There character
+reacts based on what input you gave it.
+## Moving around
+The character can move in 4 different directions the directions and the inputs
+that make them move in those directions (any of the inputs work):
+
+  Direction  |     Input
+------------ | -------------
+   North     |  "go north", "north", "w"
+   East      |  "go east",  "east", "d"
+   South     |  "go south", "south", "s"
+   West      |  "go west",  "west",  "a"
+
+
+## Interacting with object
+Every block is interactable. If you want to interact with a block, you
+just type "interact" and you will interact with the block of the direction you
+are facing. You are generally facing in the direction you last went (so if you
+walk north, you will be facing north")
 
 

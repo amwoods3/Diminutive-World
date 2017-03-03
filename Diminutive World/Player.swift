@@ -60,6 +60,7 @@ class Player {
     var pos: Position
     var room: Room
     var facing: Direction
+    
     init(called name: String, at pos: Position, in room: String) {
         self.name = name
         self.pos = pos
@@ -88,6 +89,7 @@ class Player {
     func interact() {
         self.room[self.pos.get_pos(inDirection: self.facing)].interact(with: self)
     }
+    
     
     func locationInfo(in language: String="English") -> String {
         switch language {
