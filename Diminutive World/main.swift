@@ -8,12 +8,9 @@
 
 import Foundation
 
+let starterRoom = loadRoom(called: "startersRoom")
+starterRoom.display_self()
 
-let roomA = Room(height: 4, width: 5, layout: "_____\n#   #\n#   #\n-----\n$$$$")
-roomA.display_self()
-// roomB should have the same layout as roomA
-let roomB = Room(height: 4, width: 5, layout: "_____#   ##   #-----$$$$")
-roomB.display_self()
 while true {
     if (start_menu()) {
         var player = welcome()

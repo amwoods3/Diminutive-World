@@ -11,7 +11,8 @@
 		49D495441E686F48003E403C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D495431E686F48003E403C /* Player.swift */; };
 		49D495461E687689003E403C /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D495451E687689003E403C /* Guide.swift */; };
 		49D495481E690CB3003E403C /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D495471E690CB3003E403C /* Room.swift */; };
-		49D4954A1E690F3D003E403C /* 2DArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D495491E690F3D003E403C /* 2DArray.swift */; };
+		49D4954A1E690F3D003E403C /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D495491E690F3D003E403C /* Array2D.swift */; };
+		49D4D9B81E69375E00BB3EB8 /* RoomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4D9B71E69375E00BB3EB8 /* RoomLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,7 +33,8 @@
 		49D495431E686F48003E403C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		49D495451E687689003E403C /* Guide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		49D495471E690CB3003E403C /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
-		49D495491E690F3D003E403C /* 2DArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2DArray.swift; sourceTree = "<group>"; };
+		49D495491E690F3D003E403C /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
+		49D4D9B71E69375E00BB3EB8 /* RoomLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +68,11 @@
 			isa = PBXGroup;
 			children = (
 				49D4953C1E686D0E003E403C /* main.swift */,
+				49D4D9B71E69375E00BB3EB8 /* RoomLoader.swift */,
 				49D495451E687689003E403C /* Guide.swift */,
 				49D495431E686F48003E403C /* Player.swift */,
 				49D495471E690CB3003E403C /* Room.swift */,
-				49D495491E690F3D003E403C /* 2DArray.swift */,
+				49D495491E690F3D003E403C /* Array2D.swift */,
 			);
 			path = "Diminutive World";
 			sourceTree = "<group>";
@@ -133,7 +136,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				49D495461E687689003E403C /* Guide.swift in Sources */,
-				49D4954A1E690F3D003E403C /* 2DArray.swift in Sources */,
+				49D4D9B81E69375E00BB3EB8 /* RoomLoader.swift in Sources */,
+				49D4954A1E690F3D003E403C /* Array2D.swift in Sources */,
 				49D495441E686F48003E403C /* Player.swift in Sources */,
 				49D495481E690CB3003E403C /* Room.swift in Sources */,
 				49D4953D1E686D0E003E403C /* main.swift in Sources */,
@@ -266,6 +270,7 @@
 				49D495421E686D0E003E403C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
