@@ -1,0 +1,2 @@
+This is the saves directory, all saves will go here. Because the saves are
+editable by the person, things can go wrong..
