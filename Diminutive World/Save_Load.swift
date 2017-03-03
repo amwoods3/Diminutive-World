@@ -25,13 +25,9 @@ func to(int str: String) throws -> Int {
 
 func save(_ player: Player) {
     let save_path = GameDirectory + player_data + player.name + ".dwplyr"
-    var data = String()
-    data += player.name + "\n"
-    data += "\(player.pos.x), \(player.pos.y)" + "\n"
-    data += player.room.name + "\n"
-    data += "\(player.money)"
+    let save_string = player.save_string
     do {
-        try data.write(toFile: save_path, atomically: false, encoding: String.Encoding.ascii)
+        try save_string.write(toFile: save_path, atomically: false, encoding: String.Encoding.ascii)
     } catch {
         print("Error Saving: \(error)")
     }
@@ -41,13 +37,7 @@ func load(_ player: String) -> Player {
     let load_path = GameDirectory + player_data + player + ".dwplyr"
     do {
         let playerData = try String(contentsOfFile: load_path)
-        let playerD = playerData.components(separatedBy: "\n")
-        let pos = split(line: playerD[1], by: ",")
-        let x = try to(int: pos[0])
-        let y = try to(int: pos[1])
-        let room = playerD[2]
-        let money = try to(int: playerD[3])
-        return Player(called: player, at: Position(x: x, y: y), in: room, money: money)
+        return Player(fromSave: playerData)
     } catch {
         return Player(called: player)
     }

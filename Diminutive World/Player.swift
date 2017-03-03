@@ -61,6 +61,15 @@ class Player {
     var facing: Direction
     var money: Int
     
+    var save_string: String {
+        var data = String()
+        data += self.name + "\n"
+        data += "\(self.pos.x), \(self.pos.y)" + "\n"
+        data += self.room.name + "\n"
+        data += "\(self.money)"
+        return data
+    }
+    
     init(called name: String, at pos: Position, in room: String, money: Int) {
         self.name = name
         self.pos = pos
@@ -71,6 +80,21 @@ class Player {
     
     convenience init(called name: String) {
         self.init(called: name, at: startingPosition, in: startingRoom, money: 0)
+    }
+    
+    convenience init(fromSave playerData: String) {
+        let playerD = playerData.components(separatedBy: "\n")
+        let name = playerD[0]
+        let pos = split(line: playerD[1], by: ",")
+        do {
+            let x = try to(int: pos[0])
+            let y = try to(int: pos[1])
+            let room = playerD[2]
+            let money = try to(int: playerD[3])
+            self.init(called: name, at: Position(x: x, y: y), in: room, money: money)
+        } catch {
+            self.init(called: name)
+        }
     }
     
     func go(inDirection d: Direction) {
