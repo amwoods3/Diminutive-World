@@ -49,3 +49,28 @@ Example:
 ```
 Here the block at position 0, 14 leads to roomB at position 3, 5.
 
+# Example Room Building
+```
+15, 15
+________ ______
+|             |
+|             |
+|             |
+|             |
+|             |
+|             |
+|             |
+|             |
+|             |
+|             |
+|             |
+|             |
+|             |
+---------------
+0, 7, otherRoom, 14, 7
+```
+
+Builds a room that is 15x15 has one door. The door is at (0, 7) and it leads
+to (14, 7) in the other room.
+
+
