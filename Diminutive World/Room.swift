@@ -7,20 +7,30 @@
 //
 
 import Foundation
+func get_interactable(of c: Character) -> Interactable {
+    switch c {
+    case "#", "|", "-", "_":
+        return Wall(image: String(c))
+    case " ":
+        return EmptySpace()
+    default:
+        return Wall(image: String(c))
+    }
+}
 
 class Room {
     /*
      Room gives a player the ability to walk around and go to other rooms.
      */
     let transfers: Dictionary<Position, (String, Position)>
-    var blocks: Array2D<Character>
+    var blocks: Array2D<Interactable>
     init(height: Int, width: Int, layout: String,
          transfers: Dictionary<Position, (String, Position)>) {
         /*
          Initializing a room with layout, builds room in height-by-width pattern,
          ignores newlines and everything after the last block in the room has been filled
          */
-        self.blocks = Array2D<Character>(rows: height, columns: width)
+        self.blocks = Array2D<Interactable>(rows: height, columns: width)
         self.transfers = transfers
         var i: Int = 0
         var j: Int = 0
@@ -28,7 +38,7 @@ class Room {
             if block == "\n" {
                 continue
             }
-            self.blocks[i, j] = block
+            self.blocks[i, j] = get_interactable(of: block)
             j += 1
             if (j >= width) {
                 i += 1
@@ -46,8 +56,14 @@ class Room {
                   transfers: Dictionary<Position, (String, Position)>())
     }
     
+    subscript(pos: Position) -> Interactable {
+        get {
+            return blocks[pos.y, pos.x]
+        }
+    }
+    
     func display_self() {
-        
+        self.draw_room(with: " ")
     }
     
     func draw_room(with player: Character, at pos: Position?=nil) {
@@ -65,4 +81,6 @@ class Room {
             print()
         }
     }
+    
+    
 }

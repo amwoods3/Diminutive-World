@@ -13,6 +13,7 @@ import Foundation
 // Wonder how this could be done
 let MapPath = "/Users/Andrew/Documents/CS_WORK/Game/Diminutive World/assets/"
 
+
 func split(line str: String, by splitter: String) -> Array<String> {
     /*
      Splits a string based on splitter, this function removes all spaces

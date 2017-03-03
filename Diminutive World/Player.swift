@@ -38,6 +38,11 @@ struct Position: Hashable {
         }
     }
     
+    func get_pos(inDirection d: Direction) -> Position {
+        var pos = Position(x: self.x, y: self.y)
+        pos.move(inDirection: d)
+        return pos
+    }
     var hashValue: Int {
         return (self.x.hashValue ^ self.y.hashValue)
     }
@@ -54,10 +59,12 @@ class Player {
     let name: String
     var pos: Position
     var room: Room
+    var facing: Direction
     init(called name: String, at pos: Position, in room: String) {
         self.name = name
         self.pos = pos
         self.room = loadRoom(called: room)
+        self.facing = Direction.north
     }
     
     convenience init(called name: String) {
@@ -65,7 +72,15 @@ class Player {
     }
     
     func go(inDirection d: Direction) {
-        pos.move(inDirection: d);
+        if check(inDirection: d) {
+            pos.move(inDirection: d);
+        } else {
+            print("can't go there!")
+        }
+    }
+    
+    func check(inDirection d: Direction) -> Bool {
+        return self.room[self.pos.get_pos(inDirection: d)].can_go_through
     }
     
     func locationInfo(in language: String="English") -> String {
