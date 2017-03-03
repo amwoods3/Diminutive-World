@@ -59,16 +59,18 @@ class Player {
     var pos: Position
     var room: Room
     var facing: Direction
+    var money: Int
     
-    init(called name: String, at pos: Position, in room: String) {
+    init(called name: String, at pos: Position, in room: String, money: Int) {
         self.name = name
         self.pos = pos
         self.room = loadRoom(called: room)
         self.facing = Direction.north
+        self.money = money
     }
     
     convenience init(called name: String) {
-        self.init(called: name, at: startingPosition, in: startingRoom)
+        self.init(called: name, at: startingPosition, in: startingRoom, money: 0)
     }
     
     func go(inDirection d: Direction) {

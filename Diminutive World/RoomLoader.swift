@@ -39,8 +39,8 @@ func loadRoom(called map: String) -> Room {
         let mapSize = split(line: mapInfoComponents[0], by: ",")
         
         // Attempt to get height and width, this will break if format is not correct
-        let height = Int(mapSize[0])!
-        let width = Int(mapSize[1])!
+        let height = try to(int: mapSize[0])
+        let width = try to(int: mapSize[1])
         
         // build layout (this assumes the room size is correct)
         var layout = String()
@@ -56,7 +56,7 @@ func loadRoom(called map: String) -> Room {
             // Example:
             // 0, 5, roomB, 10, 4
             let transfer = split(line: mapInfoComponents[i], by: ",")
-            let pos = Position(x: Int(transfer[0])!, y: Int(transfer[1])!)
+            let pos = Position(x: try to(int: transfer[0]), y: try to(int: transfer[1]))
             let destination = transfer[2]
             let dest_pos = Position(x: Int(transfer[3])!, y: Int(transfer[4])!)
             transfers[pos] = (destination, dest_pos)

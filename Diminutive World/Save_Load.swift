@@ -11,12 +11,25 @@ import Foundation
 let GameDirectory = "/Users/Andrew/Documents/CS_WORK/Game/Diminutive World/"
 let player_data = "saves/"
 
+enum IntError: Error {
+    case notIntConvertible
+}
+
+func to(int str: String) throws -> Int {
+    let x = Int(str)
+    if x == nil {
+        throw IntError.notIntConvertible
+    }
+    return x!
+}
+
 func save(_ player: Player) {
     let save_path = GameDirectory + player_data + player.name + ".dwplyr"
     var data = String()
     data += player.name + "\n"
     data += "\(player.pos.x), \(player.pos.y)" + "\n"
     data += player.room.name + "\n"
+    data += "\(player.money)"
     do {
         try data.write(toFile: save_path, atomically: false, encoding: String.Encoding.ascii)
     } catch {
@@ -30,10 +43,11 @@ func load(_ player: String) -> Player {
         let playerData = try String(contentsOfFile: load_path)
         let playerD = playerData.components(separatedBy: "\n")
         let pos = split(line: playerD[1], by: ",")
-        let x = Int(pos[0])!
-        let y = Int(pos[1])!
+        let x = try to(int: pos[0])
+        let y = try to(int: pos[1])
         let room = playerD[2]
-        return Player(called: player, at: Position(x: x, y: y), in: room)
+        let money = try to(int: playerD[3])
+        return Player(called: player, at: Position(x: x, y: y), in: room, money: money)
     } catch {
         return Player(called: player)
     }
