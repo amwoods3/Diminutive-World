@@ -105,6 +105,7 @@ class Player {
         } else {
             print("can't go there!")
         }
+        self.room[self.pos].stepped_on(by: self)
     }
     
     func check(inDirection d: Direction) -> Bool {

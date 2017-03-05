@@ -34,6 +34,7 @@ class Room {
         self.name = name
         self.blocks = Array2D<Interactable>(rows: height, columns: width)
         self.transfers = transfers
+        
         var i: Int = 0
         var j: Int = 0
         for block in layout.characters {
@@ -50,6 +51,11 @@ class Room {
                     break
                 }
             }
+        }
+        
+        for transfer in self.transfers {
+            self.blocks[transfer.key.y, transfer.key.x] = Door(connecting_room: transfer.value.0,
+                                                               connecting_position: transfer.value.1)
         }
     }
     

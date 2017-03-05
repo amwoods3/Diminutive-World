@@ -11,12 +11,18 @@ import Foundation
 protocol Interactable: CustomStringConvertible {
     var can_go_through: Bool {get}
     func interact(with: Player)
+    func stepped_on(by: Player)
+    
 }
 
 class EmptySpace: Interactable {
     var can_go_through: Bool = true
     func interact(with: Player) {
         print("There is nothing here")
+    }
+    
+    func stepped_on(by: Player) {
+        return
     }
     var description: String = " "
 }

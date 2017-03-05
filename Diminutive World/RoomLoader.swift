@@ -71,3 +71,5 @@ func loadRoom(called map: String) -> Room {
     }
     return Room(name: "default", height: 4, width: 5, layout: "_____\n#   #\n#   #\n-----\n$$$$")
 }
+
+
