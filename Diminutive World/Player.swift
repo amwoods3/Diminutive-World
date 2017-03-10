@@ -57,7 +57,7 @@ let startingPosition = Position(x: 5, y: 5)
 class Player {
     let name: String
     var pos: Position
-    var room: Room
+    unowned(unsafe) var room: Room
     var facing: Direction
     var money: Int
     

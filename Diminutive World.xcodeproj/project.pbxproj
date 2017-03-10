@@ -11,6 +11,7 @@
 		49422B8C1E696388009D00C6 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422B8B1E696388009D00C6 /* Wall.swift */; };
 		49422B901E697528009D00C6 /* Save_Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422B8F1E697528009D00C6 /* Save_Load.swift */; };
 		49422B921E6C1F15009D00C6 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422B911E6C1F15009D00C6 /* Door.swift */; };
+		49422B941E72B191009D00C6 /* RoomXMLDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422B931E72B191009D00C6 /* RoomXMLDelegate.swift */; };
 		49D4953D1E686D0E003E403C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4953C1E686D0E003E403C /* main.swift */; };
 		49D495441E686F48003E403C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D495431E686F48003E403C /* Player.swift */; };
 		49D495461E687689003E403C /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D495451E687689003E403C /* Guide.swift */; };
@@ -36,6 +37,7 @@
 		49422B8B1E696388009D00C6 /* Wall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		49422B8F1E697528009D00C6 /* Save_Load.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Save_Load.swift; sourceTree = "<group>"; };
 		49422B911E6C1F15009D00C6 /* Door.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
+		49422B931E72B191009D00C6 /* RoomXMLDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomXMLDelegate.swift; sourceTree = "<group>"; };
 		49D495391E686D0E003E403C /* Diminutive World */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Diminutive World"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D4953C1E686D0E003E403C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		49D495431E686F48003E403C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				49D4D9B71E69375E00BB3EB8 /* RoomLoader.swift */,
 				49D495451E687689003E403C /* Guide.swift */,
 				49D495431E686F48003E403C /* Player.swift */,
+				49422B931E72B191009D00C6 /* RoomXMLDelegate.swift */,
 				49422B8F1E697528009D00C6 /* Save_Load.swift */,
 				49D495471E690CB3003E403C /* Room.swift */,
 				49422B891E6961B1009D00C6 /* Interactable.swift */,
@@ -150,6 +153,7 @@
 				49D495461E687689003E403C /* Guide.swift in Sources */,
 				49D4D9B81E69375E00BB3EB8 /* RoomLoader.swift in Sources */,
 				49D4954A1E690F3D003E403C /* Array2D.swift in Sources */,
+				49422B941E72B191009D00C6 /* RoomXMLDelegate.swift in Sources */,
 				49422B921E6C1F15009D00C6 /* Door.swift in Sources */,
 				49D495441E686F48003E403C /* Player.swift in Sources */,
 				49D495481E690CB3003E403C /* Room.swift in Sources */,

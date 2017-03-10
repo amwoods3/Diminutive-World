@@ -72,4 +72,17 @@ func loadRoom(called map: String) -> Room {
     return Room(name: "default", height: 4, width: 5, layout: "_____\n#   #\n#   #\n-----\n$$$$")
 }
 
-
+func loadRoomXML(called map: String) -> Bool {
+    let map_name = GameDirectory + MapPath + map + ".xml"
+    do {
+        let map_data = try String(contentsOfFile: map_name).data(using: String.Encoding.utf8)
+        let parser = XMLParser(data: map_data!)
+        let delegate = RoomBuilder()
+        parser.delegate = delegate
+        let success = parser.parse()
+        return success
+    } catch {
+        print("Nope: \(error)")
+    }
+    return false
+}
