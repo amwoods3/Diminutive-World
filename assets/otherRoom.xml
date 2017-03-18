@@ -2,8 +2,14 @@
 <Room>
 	<size>15, 15</size>
 	<door>
-		<location>8, 14</location>
+		<location>8, 14 </location>
 		<destinationRoom>starterRoom</destinationRoom>
 		<destinationLocation>8, 1</destinationLocation>
+	</door>
+	
+	<door>
+		<location> 14, 7 </location>
+		<destinationRoom>BigRoom</destinationRoom>
+		<destinationLocation>1, 7</destinationLocation>
 	</door>
 </Room>

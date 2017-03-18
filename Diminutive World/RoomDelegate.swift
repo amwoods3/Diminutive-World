@@ -58,8 +58,8 @@ class RoomDelegate: NSObject, XMLParserDelegate {
         if identifying == "size" {
             let size = split(line: string, by: ",")
             do {
-                room_height = try to(int: size[0])
-                room_width = try to(int: size[1])
+                room_width = try to(int: size[0])
+                room_height = try to(int: size[1])
             } catch {
                 print("The size could not be determined")
             }

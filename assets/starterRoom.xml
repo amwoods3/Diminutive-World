@@ -10,4 +10,13 @@
 	<wall> 4, 5 </wall>
 	<wall> 4, 6 </wall>
 	<wall> 4, 7 </wall>
+	<wall> 8, 2 </wall>
+	<wall> 7, 1 </wall>
+	<wall> 9, 1 </wall>
+	
+	<door>
+		<location> 14, 7 </location>
+		<destinationRoom>BigRoom</destinationRoom>
+		<destinationLocation> 1, 22 </destinationLocation>
+	</door>
 </Room>

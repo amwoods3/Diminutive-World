@@ -31,7 +31,7 @@ class Room {
         self.blocks = Array2D(rows: height, columns: width)
         for row in 0...height-1 {
             for col in 0...width-1 {
-                if row == 0 || row == height-1 || col == 0 || col == height-1 {
+                if row == 0 || row == height-1 || col == 0 || col == width-1 {
                     self.blocks[row, col] = Wall(image: "#")
                 } else {
                     self.blocks[row, col] = EmptySpace()

@@ -37,7 +37,7 @@ class Array2D<T>: Sequence {
     init(rows: Int, columns: Int) {
         self.rows = rows
         self.columns = columns
-        arr = Array(repeating: Array<T?>(repeating: nil, count: columns), count: rows)
+        self.arr = Array(repeating: Array<T?>(repeating: nil, count: columns), count: rows)
     }
     
     subscript(row: Int, col: Int) -> T {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Room>
+	<size> 25, 50 </size>
+	<door> 
+		<location> 0, 7 </location>
+		<destinationRoom>otherRoom</destinationRoom>
+		<destinationLocation> 13, 7 </destinationLocation>
+	</door>
+	<door>
+		<location> 0, 22 </location>
+		<destinationRoom>starterRoom</destinationRoom>
+		<destinationLocation> 13, 7 </destinationLocation>
+	</door>
+</Room>
