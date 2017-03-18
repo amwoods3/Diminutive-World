@@ -25,6 +25,7 @@ class Room {
     var transfers: Dictionary<Position, (String, Position)>
     let name: String
     var blocks: Array2D<Interactable>
+    var battle_rate: Int = 0
     
     init(_ name: String, of_size height: Int, by width: Int) {
         self.name = name
@@ -77,5 +78,11 @@ class Room {
     func change_block(at pos: Position, to this: Interactable) {
         self.blocks[pos] = this
     }
+    
+    func set_battle_rate(to r: Int) {
+        self.battle_rate = r
+    }
+    
+    
     
 }

@@ -21,8 +21,11 @@ class EmptySpace: Interactable {
         print("There is nothing here")
     }
     
-    func stepped_on(by: Player) {
-        return
+    func stepped_on(by player: Player) {
+        if select(at_rate: player.room.battle_rate, out_of: 100) {
+            print("You enter a battle!")
+            print("The battle has not been implemented yet, thus the fight is over.")
+        }
     }
     var description: String = " "
 }

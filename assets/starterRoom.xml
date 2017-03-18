@@ -19,4 +19,6 @@
 		<destinationRoom>BigRoom</destinationRoom>
 		<destinationLocation> 1, 22 </destinationLocation>
 	</door>
+	
+	<battleRate> 70 </battleRate>
 </Room>

@@ -8,6 +8,9 @@
 
 import Foundation
 
+func trim(_ s: String) -> String {
+    return s.trimmingCharacters(in: CharacterSet(charactersIn: " \n\t"))
+}
 func split(line str: String, by splitter: String) -> Array<String> {
     /*
      Splits a string based on splitter, this function removes all spaces
@@ -51,4 +54,13 @@ func to(position str: String) throws -> Position {
     } catch ToError.notIntConvertible {
         throw ToError.notPositionConvertible
     }
+}
+
+func select(at_rate r: Int, out_of max: Int) -> Bool {
+    /*
+     Randomly returns true based on the rate.
+     If the rate is higher than the out_of it will always return true
+     */
+    
+    return arc4random_uniform(UInt32(max)) < UInt32(r)
 }

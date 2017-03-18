@@ -11,4 +11,6 @@
 		<destinationRoom>starterRoom</destinationRoom>
 		<destinationLocation> 13, 7 </destinationLocation>
 	</door>
+	
+	<battleRate> 10 </battleRate>
 </Room>

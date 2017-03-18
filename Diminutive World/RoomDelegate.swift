@@ -16,6 +16,7 @@ class RoomDelegate: NSObject, XMLParserDelegate {
     var extra_walls: Dictionary<Int, Position?> = [:]
     var room_height: Int = 0
     var room_width: Int = 0
+    var battle_rate: Int?
     var current_door: Int = 0
     var current_wall: Int = 0
     var building: String? = nil
@@ -31,7 +32,8 @@ class RoomDelegate: NSObject, XMLParserDelegate {
             extra_walls[current_wall] = nil
             identifying = nil
         } else {
-            if can_find(elementName, in: ["location", "size", "destinationLocation", "destinationRoom"]) {
+            if can_find(elementName, in: ["location", "size", "destinationLocation", "destinationRoom",
+                                          "battleRate"]) {
                 identifying = elementName
             }
             else {
@@ -64,7 +66,14 @@ class RoomDelegate: NSObject, XMLParserDelegate {
                 print("The size could not be determined")
             }
         }
-        if identifying == "location" {
+        else if identifying == "battleRate" {
+            do {
+                battle_rate = try to(int: trim(string))
+            } catch {
+                print("Battle Rate?")
+            }
+        }
+        else if identifying == "location" {
             if building == "door" {
                 do {
                 doors[current_door]!.pos = try to(position: string)
@@ -75,7 +84,7 @@ class RoomDelegate: NSObject, XMLParserDelegate {
         }
         if identifying == "destinationRoom" {
             if building == "door" {
-                doors[current_door]!.des = string
+                doors[current_door]!.des = trim(string)
             }
         }
         if identifying == "destinationLocation" {
@@ -115,6 +124,10 @@ class RoomDelegate: NSObject, XMLParserDelegate {
                     this_room.change_block(at: extra_walls[wall]!!, to: Wall(image: "#"))
                 }
             }
+        }
+        if battle_rate != nil {
+            print("This rooms battle rate: \(battle_rate!)")
+            this_room.set_battle_rate(to: battle_rate!)
         }
         return this_room
     }

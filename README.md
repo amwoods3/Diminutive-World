@@ -37,4 +37,7 @@ Size format:
 <size> height, width </size>
 
 
+Making a room having battles is done by setting the battle rate.
+The battle rate is an integer out of 100 and can be set like this:
 
+<battleRate> 10 </battleRate>
