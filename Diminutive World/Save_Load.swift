@@ -11,17 +11,6 @@ import Foundation
 let GameDirectory = "/Users/Andrew/Documents/CS_WORK/Game/Diminutive World/"
 let player_data = "saves/"
 
-enum IntError: Error {
-    case notIntConvertible
-}
-
-func to(int str: String) throws -> Int {
-    let x = Int(str)
-    if x == nil {
-        throw IntError.notIntConvertible
-    }
-    return x!
-}
 
 func save(_ player: Player) {
     let save_path = GameDirectory + player_data + player.name + ".dwplyr"

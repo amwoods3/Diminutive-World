@@ -26,7 +26,7 @@ class Door: Interactable {
     
     func stepped_on(by p: Player) {
         print("You enter \(connecting_room).")
-        p.room = loadRoom(called: connecting_room)
+        p.room = loadRoom(called: connecting_room)!
         p.pos = connecting_position
     }
 }

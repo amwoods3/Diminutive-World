@@ -49,6 +49,15 @@ class Array2D<T>: Sequence {
         }
     }
     
+    subscript(pos: Position) -> T {
+        get {
+            return arr[pos.y][pos.x]!
+        }
+        set(newValue) {
+            arr[pos.y][pos.x] = newValue
+        }
+    }
+    
     subscript(row: Int) -> Array<T> {
         /*
          Single subscript provides only a get method returns an Array with type T

@@ -22,47 +22,26 @@ class Room {
     /*
      Room gives a player the ability to walk around and go to other rooms.
      */
-    let transfers: Dictionary<Position, (String, Position)>
+    var transfers: Dictionary<Position, (String, Position)>
     let name: String
     var blocks: Array2D<Interactable>
-    init(name: String, height: Int, width: Int, layout: String,
-         transfers: Dictionary<Position, (String, Position)>) {
-        /*
-         Initializing a room with layout, builds room in height-by-width pattern,
-         ignores newlines and everything after the last block in the room has been filled
-         */
+    
+    init(_ name: String, of_size height: Int, by width: Int) {
         self.name = name
-        self.blocks = Array2D<Interactable>(rows: height, columns: width)
-        self.transfers = transfers
-        
-        var i: Int = 0
-        var j: Int = 0
-        for block in layout.characters {
-            if block == "\n" {
-                continue
-            }
-            self.blocks[i, j] = get_interactable(of: block)
-            j += 1
-            if (j >= width) {
-                i += 1
-                j = 0
-                if (i >= height) {
-                    // protect against extra characters
-                    break
+        self.blocks = Array2D(rows: height, columns: width)
+        for row in 0...height-1 {
+            for col in 0...width-1 {
+                if row == 0 || row == height-1 || col == 0 || col == height-1 {
+                    self.blocks[row, col] = Wall(image: "#")
+                } else {
+                    self.blocks[row, col] = EmptySpace()
                 }
             }
         }
-        
-        for transfer in self.transfers {
-            self.blocks[transfer.key.y, transfer.key.x] = Door(connecting_room: transfer.value.0,
-                                                               connecting_position: transfer.value.1)
-        }
+        transfers = Dictionary()
     }
     
-    convenience init(name: String, height: Int, width: Int, layout: String) {
-        self.init(name: name, height: height, width: width, layout: layout,
-                  transfers: Dictionary<Position, (String, Position)>())
-    }
+    
     
     subscript(pos: Position) -> Interactable {
         get {
@@ -90,5 +69,13 @@ class Room {
         }
     }
     
+    func add_transfer(at p: Position, heading_to op: Position, in room: String) {
+        transfers[p] = (room, op)
+        self.blocks[p] = Door(connecting_room: room, connecting_position: op)
+    }
+    
+    func change_block(at pos: Position, to this: Interactable) {
+        self.blocks[pos] = this
+    }
     
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-print(loadRoomXML(called: "starterRoom"))
+//print(loadRoomXML(called: "starterRoom"))
 while true {
     if (start_menu()) {
         var player = welcome()
