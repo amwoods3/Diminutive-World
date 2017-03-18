@@ -26,7 +26,11 @@ Currently the accepted tags for a room are:
 <destinationRoom> someRoomName </destinationRoom>
 <destinationLocation> int, int <destinationLocation>
 
-<wall> currently does nothing
+An extra wall can be built in the following manner:
+<wall> x, y </wall>
+
+Where x, y is the x and y position of the wall within the room.
+(Note: the top left corner of the room is 0, 0)
 
 <size> sets the size of the room (the room is assumed to be surrounded by walls)
 Size format:

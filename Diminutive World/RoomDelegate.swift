@@ -25,9 +25,11 @@ class RoomDelegate: NSObject, XMLParserDelegate {
         if elementName == "door" {
             building = "door"
             doors[current_door] = (nil, nil, nil)
+            identifying = nil
         } else if elementName == "wall" {
             building = "wall"
             extra_walls[current_wall] = nil
+            identifying = nil
         } else {
             if can_find(elementName, in: ["location", "size", "destinationLocation", "destinationRoom"]) {
                 identifying = elementName
@@ -85,6 +87,12 @@ class RoomDelegate: NSObject, XMLParserDelegate {
                 }
             }
         }
+        if building == "wall" && identifying == nil && !string.isEmpty {
+            do {
+                extra_walls[current_wall] = try to(position: string)
+            } catch {
+            }
+        }
         
     }
     
@@ -108,7 +116,6 @@ class RoomDelegate: NSObject, XMLParserDelegate {
                 }
             }
         }
-        print("Flipint ", this_room.blocks.rows, this_room.blocks.columns)
         return this_room
     }
 }

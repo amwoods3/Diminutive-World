@@ -6,4 +6,8 @@
 		<destinationRoom>otherRoom</destinationRoom>
 		<destinationLocation>8, 13</destinationLocation>
 	</door>
+	<wall> 4, 4 </wall>
+	<wall> 4, 5 </wall>
+	<wall> 4, 6 </wall>
+	<wall> 4, 7 </wall>
 </Room>

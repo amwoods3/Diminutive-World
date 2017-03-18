@@ -14,7 +14,7 @@ func split(line str: String, by splitter: String) -> Array<String> {
      */
     var components = str.components(separatedBy: splitter)
     for i in 0...components.count-1 {
-        components[i] = components[i].trimmingCharacters(in: CharacterSet(charactersIn: " "))
+        components[i] = components[i].trimmingCharacters(in: CharacterSet(charactersIn: " \n\t"))
     }
     return components
 }
