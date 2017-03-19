@@ -60,6 +60,8 @@ class Player {
     var room: Room
     var facing: Direction
     var money: Int
+    var hp: Int
+    var maxHp: Int
     
     var save_string: String {
         var data = String()
@@ -77,6 +79,8 @@ class Player {
         
         self.facing = Direction.north
         self.money = money
+        self.hp = 10
+        self.maxHp = 10
     }
     
     convenience init(called name: String) {
