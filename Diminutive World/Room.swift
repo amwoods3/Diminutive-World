@@ -45,17 +45,25 @@ class Room {
     
     
     subscript(pos: Position) -> Interactable {
+        /*
+         Get a block from the position.
+         */
         get {
             return blocks[pos.y, pos.x]
         }
     }
     
     func display_self() {
+        /*
+         Display a map of the room (don't show a player)
+         */
         self.draw_room(with: " ")
     }
     
     func draw_room(with player: Character, at pos: Position?=nil) {
-        
+        /*
+         Draw the room with the player inside. The player is represented by the character given.
+         */
         for (i, row) in self.blocks.enumerated() {
             for (j, block) in row.enumerated() {
                 if pos == nil {
@@ -71,15 +79,25 @@ class Room {
     }
     
     func add_transfer(at p: Position, heading_to op: Position, in room: String) {
+        /*
+         Add a door to a room. Also changes the block at the given position to a door.
+         */
         transfers[p] = (room, op)
         self.blocks[p] = Door(connecting_room: room, connecting_position: op)
     }
     
     func change_block(at pos: Position, to this: Interactable) {
+        /*
+         Add or change a block at a given position.
+         */
         self.blocks[pos] = this
     }
     
     func set_battle_rate(to r: Int) {
+        /*
+         Change battle rate. Battle rate is out of 100 meaning any battle rate over 100 is guaranteed to
+         start a battle at every step.
+         */
         self.battle_rate = r
     }
     

@@ -20,5 +20,5 @@
 		<destinationLocation> 1, 22 </destinationLocation>
 	</door>
 	
-	<battleRate> 70 </battleRate>
+	<battleRate> 99 </battleRate>
 </Room>

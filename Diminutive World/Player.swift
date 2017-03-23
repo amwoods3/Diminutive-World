@@ -62,32 +62,48 @@ class Player {
     var money: Int
     var hp: Int
     var maxHp: Int
+    var exp: Int
     
     var save_string: String {
+        /*
+         This variable takes all of the variables from the player and puts it in a format that could be 
+         used to reload the character at a later time.
+         */
         var data = String()
         data += self.name + "\n"
         data += "\(self.pos.x), \(self.pos.y)" + "\n"
         data += self.room.name + "\n"
-        data += "\(self.money)"
+        data += "\(self.money)" + "\n"
+        data += "\(self.hp)" + "\n"
+        data += "\(self.maxHp)" + "\n"
+        data += "\(self.exp)"
         return data
     }
     
-    init(called name: String, at pos: Position, in room: String, money: Int) {
+    init(called name: String, at pos: Position, in room: String, money: Int,
+         hp: Int=10, maxHp: Int=10, exp: Int=0) {
         self.name = name
         self.pos = pos
         self.room = loadRoom(called: room)!
         
         self.facing = Direction.north
         self.money = money
-        self.hp = 10
-        self.maxHp = 10
+        self.hp = hp
+        self.maxHp = maxHp
+        self.exp = exp
     }
     
     convenience init(called name: String) {
+        /*
+         Load a generic character
+         */
         self.init(called: name, at: startingPosition, in: startingRoom, money: 0)
     }
     
     convenience init(fromSave playerData: String) {
+        /*
+         Load a character from a save string. This corresponds to the character save_string variable class.
+         */
         let playerD = playerData.components(separatedBy: "\n")
         let name = playerD[0]
         let pos = split(line: playerD[1], by: ",")
@@ -96,13 +112,20 @@ class Player {
             let y = try to(int: pos[1])
             let room = playerD[2]
             let money = try to(int: playerD[3])
-            self.init(called: name, at: Position(x: x, y: y), in: room, money: money)
+            let hp = try to(int: playerD[4])
+            let maxHp = try to(int: playerD[5])
+            let exp = try to(int: playerD[6])
+            self.init(called: name, at: Position(x: x, y: y), in: room, money: money,
+                      hp: hp, maxHp: maxHp, exp: exp)
         } catch {
             self.init(called: name)
         }
     }
     
     func go(inDirection d: Direction) {
+        /*
+         Move Player in given Direction (Direction.north, Direction.south, Direction.west, Direction.east)
+         */
         if check(inDirection: d) {
             // move player if spot can be stood in
             pos.move(inDirection: d);
@@ -110,10 +133,15 @@ class Player {
         } else {
             print("can't go there!")
         }
+        // Every Interactable has a stepped_on function, this function determines what happens when the player
+        // Steps on the interactable (a door transfers the player to another location, etc).
         self.room[self.pos].stepped_on(by: self)
     }
     
     func check(inDirection d: Direction) -> Bool {
+        /*
+         Checks if the interactable in the given direction can be stepped on
+         */
         return self.room[self.pos.get_pos(inDirection: d)].can_go_through
     }
     
@@ -125,9 +153,9 @@ class Player {
     func locationInfo(in language: String="English") -> String {
         switch language {
         case "English":
-            return "\(name) is standing at <\(pos.x), \(pos.y)>"
+            return "\(name) is standing at <\(pos.x), \(pos.y)> in \(room)"
         case "Japanese":
-            return "\(name)は<\(pos.x), \(pos.y)>にいる"
+            return "\(name)は\(room)の<\(pos.x), \(pos.y)>にいる"
         default:
             return "<\(pos.x), \(pos.y)>"
         }

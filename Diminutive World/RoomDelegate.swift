@@ -23,6 +23,9 @@ class RoomDelegate: NSObject, XMLParserDelegate {
     var identifying: String? = nil
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        /*
+         Helps get the current state of the parser and builds the correct interactable to put in the room.
+         */
         if elementName == "door" {
             building = "door"
             doors[current_door] = (nil, nil, nil)
@@ -43,11 +46,14 @@ class RoomDelegate: NSObject, XMLParserDelegate {
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        /*
+         This parser represents the end of a tag.
+         */
         if elementName == "door" {
-            current_door += 1
+            current_door += 1 // next door
             building = nil
         } else if elementName == "wall" {
-            current_wall += 1
+            current_wall += 1 // next wall
             building = nil
         }
         if elementName == identifying {
@@ -57,7 +63,11 @@ class RoomDelegate: NSObject, XMLParserDelegate {
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
+        /*
+         This parser gives the information that is in the tag.
+         */
         if identifying == "size" {
+            // Get the size of the room
             let size = split(line: string, by: ",")
             do {
                 room_width = try to(int: size[0])
@@ -67,6 +77,8 @@ class RoomDelegate: NSObject, XMLParserDelegate {
             }
         }
         else if identifying == "battleRate" {
+            // Determine how oftern a battle starts while walking in the room.
+            // The battle rate is out of 100 (anything above 100 results in a battle every step)
             do {
                 battle_rate = try to(int: trim(string))
             } catch {
@@ -126,7 +138,6 @@ class RoomDelegate: NSObject, XMLParserDelegate {
             }
         }
         if battle_rate != nil {
-            print("This rooms battle rate: \(battle_rate!)")
             this_room.set_battle_rate(to: battle_rate!)
         }
         return this_room

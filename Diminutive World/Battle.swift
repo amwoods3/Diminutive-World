@@ -9,12 +9,16 @@
 import Foundation
 
 func Battle(_ pl: Player, vs mon: Monster) {
+    /*
+     Function that runs battle.
+     */
     print("You enter a battle!")
     while true {
         mon.hp -= 1
         print("Monster takes a hit!")
         if mon.hp == 0 {
             print("You win!")
+            pl.exp += 1
             return
         }
         pl.hp -= 1

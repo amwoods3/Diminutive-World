@@ -9,6 +9,9 @@
 import Foundation
 
 func trim(_ s: String) -> String {
+    /*
+     Get rid of general whitespace on a string
+     */
     return s.trimmingCharacters(in: CharacterSet(charactersIn: " \n\t"))
 }
 func split(line str: String, by splitter: String) -> Array<String> {
@@ -23,6 +26,9 @@ func split(line str: String, by splitter: String) -> Array<String> {
 }
 
 func can_find(_ element: String, in array: Array<String>) -> Bool {
+    /*
+     Searches for a string in the array. If the string is found returns true, returns false otherwise.
+     */
     for string in array {
         if element == string {
             return true
@@ -37,6 +43,9 @@ enum ToError: Error {
 }
 
 func to(int str: String) throws -> Int {
+    /*
+     Convert a string into an integer allowing for an Error to be thrown if something goes wrong.
+     */
     let x = Int(str)
     if x == nil {
         throw ToError.notIntConvertible
@@ -46,6 +55,9 @@ func to(int str: String) throws -> Int {
 
 
 func to(position str: String) throws -> Position {
+    /*
+     Get a position based on the string. The expected string format is "Int, Int".
+     */
     let b = split(line: str, by: ",")
     do {
         let x = try to(int: b[0])
